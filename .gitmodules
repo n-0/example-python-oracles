@@ -1,0 +1,3 @@
+[submodule "mr_world_proto"]
+	path = mr_world_proto
+	url = git@github.com:n-0/mr_world_proto.git
