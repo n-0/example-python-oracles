@@ -41,16 +41,22 @@ csv formatted data will result in an empty omen_series.
 The oracle listens on port `10012` and expects a `persistor` service at port `10000`.
 You can use the `create_scenario.py` for easier oracle/scenario persistence.
 An example in the python REPL
-
+#/path/to/file/silver_prices.csv"
 
 ```python
-import oracle
+import oracles
+import grpc_generated
 
-oracle.csv_oracle.create_oracle(['parse_csv', 'some_helpful_alias']) # saves the oracle in the persistor with alias/ticker 'parse_csv'
+persistor = oracles.csv_oracle.helper.connect_persistor()
+
+# meaning of arugments
+# persistor stub (grpc persistor service)
+# saves the oracle in the persistor with alias/ticker 'parse_csv' and 'some_helpful_alias'
+oracles.csv_oracle.helper.create_oracle(persistor, ['parse_csv', 'some_helpful_alias'])
 init_state_palim = {
     'files': [
         {
-            'path':"/path/to/file/silver_prices.csv",
+            'path': "/path/to/silver.csv",
             't_mapping': "%m/%d/%Y",
             'mapping': {
                't':0,
@@ -63,14 +69,28 @@ init_state_palim = {
         }
     ]
 }
-oracle.csv_oracle.create_scenario(
-    init_state_palim, # the initial state
-    ['scenario_silver_price'], # aliases for scenario
-    'parse_csv') # the id or alias of the created oracle
-)
 
-oracle.csv_oracle.serve() # start the oracle service
+# meaning of arguments
+# persistor stub
+# the initial state
+# aliases for scenario
+# the id or alias of the created oracle
+oracles.csv_oracle.helper.create_scenario(persistor, init_state_palim, ['scenario_silver_price'], 'parse_csv')
+
+oracles.csv_oracle.serve() # start the oracle service
 ```
 
 Now you can activate the scenario with the alias (`scenario_silver_price`) in the director and you have
 an omen_series of ticks for the prices, you're watching.
+
+To start it the scenario from python in a separate repl with a director running at 10001, you can use the following
+
+```python
+import oracles
+from grpc_generated.util_pb2 import GRPCAddress
+from grpc_generated.director_pb2 import TurnScenario
+
+director = oracles.csv_oracle.helper.connect_director()
+director.set_persistor(GRPCAddress(url='http://0.0.0.0:10000'))
+director.turn_scenario(TurnScenario(scenario_id="scenario_silver_price", turn=True))
+```

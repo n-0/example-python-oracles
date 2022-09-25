@@ -7,7 +7,7 @@ from grpc_generated.oracle_pb2_grpc import OracleServicer, add_OracleServicer_to
 from grpc_generated.oracle_pb2 import ConventionalOracleState
 from grpc_generated.tick_pb2 import BasicTick, Tick
 from grpc_generated.omen_pb2 import ScenarioOmenSeriesItem, Omen, OmenSmoke
-from . import create_scenario
+from . import helper
 
 class Oracler(OracleServicer):
     def update(self, request_iterator, context):

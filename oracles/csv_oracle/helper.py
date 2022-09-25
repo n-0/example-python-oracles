@@ -2,6 +2,7 @@ import grpc
 import json
 from typing import TypedDict, Optional
 from grpc_generated.persistor_pb2_grpc import PersistorStub
+from grpc_generated.director_pb2_grpc import DirectorStub
 from grpc_generated.oracle_pb2 import OracleInfo, ConventionalOracleState
 from grpc_generated.scenario_pb2 import Scenario
 from grpc_generated.tick_pb2 import Frequency, Day
@@ -30,12 +31,15 @@ def connect_persistor():
     stub = PersistorStub(channel)
     return stub
 
-def create_oracle(ticker: list[str]):
-    stub = connect_persistor()
+def connect_director():
+    channel = grpc.insecure_channel('localhost:10001')
+    stub = DirectorStub(channel)
+    return stub
+
+def create_oracle(stub, ticker: list[str]):
     stub.create_oracle(OracleInfo(id="", ticker=ticker, url="http://0.0.0.0:10012"))
 
-def create_scenario(params: Parameter, ticker: list[str], oracle_id: str):
-    stub = connect_persistor()
+def create_scenario(stub, params: Parameter, ticker: list[str], oracle_id: str):
     encoded_params = (json.dumps(params)).encode()
     state = ConventionalOracleState(
         scenario_id="",
@@ -52,3 +56,4 @@ def create_scenario(params: Parameter, ticker: list[str], oracle_id: str):
         state= state,
         cycle= frequency
     ))
+
