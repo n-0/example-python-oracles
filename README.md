@@ -51,6 +51,6 @@ it can be imported into other python files as
 import oracles
 ```
 
-Read the markdown files in `oracles` for details on the specific oracles.
+Read the [markdown](./oracles/README.md) files in `oracles` for details on the specific oracles.
 
 **Author**: Niklas Jona Lohmann

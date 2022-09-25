@@ -41,7 +41,6 @@ csv formatted data will result in an empty omen_series.
 The oracle listens on port `10012` and expects a `persistor` service at port `10000`.
 You can use the `create_scenario.py` for easier oracle/scenario persistence.
 An example in the python REPL
-#/path/to/file/silver_prices.csv"
 
 ```python
 import oracles
