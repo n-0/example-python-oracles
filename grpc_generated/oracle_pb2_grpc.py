@@ -2,8 +2,8 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import scenario_pb2 as scenario__pb2
-import util_pb2 as util__pb2
+from . import scenario_pb2 as scenario__pb2
+from . import util_pb2 as util__pb2
 
 
 class OracleStub(object):

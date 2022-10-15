@@ -2,12 +2,12 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import broker_pb2 as broker__pb2
-import instrument_pb2 as instrument__pb2
-import omen_pb2 as omen__pb2
-import oracle_pb2 as oracle__pb2
-import scenario_pb2 as scenario__pb2
-import util_pb2 as util__pb2
+from . import broker_pb2 as broker__pb2
+from . import instrument_pb2 as instrument__pb2
+from . import omen_pb2 as omen__pb2
+from . import oracle_pb2 as oracle__pb2
+from . import scenario_pb2 as scenario__pb2
+from . import util_pb2 as util__pb2
 
 
 class PersistorStub(object):

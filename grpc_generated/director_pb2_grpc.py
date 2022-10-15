@@ -2,9 +2,9 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import director_pb2 as director__pb2
-import scenario_pb2 as scenario__pb2
-import util_pb2 as util__pb2
+from . import director_pb2 as director__pb2
+from . import scenario_pb2 as scenario__pb2
+from . import util_pb2 as util__pb2
 
 
 class DirectorStub(object):

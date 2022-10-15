@@ -11,8 +11,8 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-import tick_pb2 as tick__pb2
-import omen_pb2 as omen__pb2
+from . import tick_pb2 as tick__pb2
+from . import omen_pb2 as omen__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0escenario.proto\x12\x0eworld.scenario\x1a\ntick.proto\x1a\nomen.proto\"O\n\rScenarioState\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06ticker\x18\x02 \x03(\t\x12\x13\n\x0bscenario_id\x18\x03 \x01(\t\x12\r\n\x05state\x18\x04 \x01(\x0c\"@\n\x11ScenarioStateList\x12+\n\x04list\x18\x01 \x03(\x0b\x32\x1d.world.scenario.ScenarioState\"M\n\x12ScenarioDependency\x12\x13\n\x0bscenario_id\x18\x01 \x01(\t\x12\x15\n\x08state_id\x18\x02 \x01(\tH\x00\x88\x01\x01\x42\x0b\n\t_state_id\"J\n\x16ScenarioDependencyList\x12\x30\n\x04list\x18\x01 \x03(\x0b\x32\".world.scenario.ScenarioDependency\"l\n\x14ScenarioDependencies\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06ticker\x18\x02 \x03(\t\x12\x38\n\x0c\x64\x65pendencies\x18\x03 \x03(\x0b\x32\".world.scenario.ScenarioDependency\"N\n\x18ScenarioDependenciesList\x12\x32\n\x04list\x18\x01 \x03(\x0b\x32$.world.scenario.ScenarioDependencies\"i\n\x08Scenario\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06ticker\x18\x02 \x03(\t\x12\x0e\n\x06oracle\x18\x03 \x01(\t\x12\x1a\n\x12scenario_series_id\x18\x04 \x01(\t\x12\x15\n\rdefault_state\x18\x05 \x01(\t\"6\n\x0cScenarioList\x12&\n\x04list\x18\x01 \x03(\x0b\x32\x18.world.scenario.Scenariob\x06proto3')
