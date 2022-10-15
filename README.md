@@ -32,7 +32,7 @@ in dealing with packages, so one has to run the following python code from the p
 
 ```python
 import os
-path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+path = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) # run in a file
 path = os.path.join(path, 'src') # package name where generated files are reside
 file_path = f'{path}/*_pb2*.py*'
 os.system(f'2to3 -wn -f import {file_path}')

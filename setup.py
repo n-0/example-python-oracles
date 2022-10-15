@@ -8,7 +8,7 @@ setup(
     author_email='niklas.lohmann@tuhh.de',
     license='BSD 2-clause',
     packages=['oracles', 'grpc_generated'],
-    install_requires=['grpcio-tools', 'grpcio'],
+    install_requires=['grpcio-tools', 'grpcio', 'confluent_kafka'],
     classifiers=[
         'Development Status :: 1 - Planning',
         'Intended Audience :: Science/Research',
