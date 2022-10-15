@@ -1,4 +1,7 @@
-grpc_generated/
+#grpc_generated/
+# No, but actually yes, because
+# generation doesnt change switch between oses
+# and people dont want to regenerate
 python_oracles.egg-info/
 build/lib/
 **/__pycache__
